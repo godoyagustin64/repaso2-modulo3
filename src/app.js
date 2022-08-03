@@ -14,33 +14,7 @@ app.use("/mobile", express.static("mobile"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-app.get("/", (req, res) => {
-    res.render("index", {
-        usuario: [
-            {
-            name: "Agustin",
-            email: "agustin@gmail.com"
-        },
-        {
-            name: "nahuel",
-            email: "nahuel@gmail.com"
-        },
-        {
-            name: "godoy",
-            email: "godoy@gmail.com"
-        },
-        {
-            name: "gaetan",
-            email: "gaetan@gmail.com"
-        },
-    ]
-    });
-});
-
-app.get("/product", function(req, res) {
-
-    res.render("product");
-})
+app.use(require("./routes/products"));
 
 app.listen(3000, () => console.log("Proyecto en el puerto 3000"));
 
